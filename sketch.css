@@ -1,0 +1,20 @@
+body {
+    width: 600px;
+    height: 600px;
+    margin: 50px auto;
+    border: 3px dotted black;
+    /* 
+        use flexbox with flex-wrap so that each row of outer box only can fit 16 boxes.
+        other boxes will go into next row accordingly until all rows are completely filled.
+    */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* 
+    CSS style will be applied accordingly once JavaScript event is triggered.
+*/
+div {
+    box-sizing: border-box;
+    border: 1px dotted black;
+}
