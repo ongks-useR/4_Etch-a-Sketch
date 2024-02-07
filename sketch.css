@@ -1,7 +1,19 @@
 body {
+    text-align: center;
+}
+
+button {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 10px 30px;
+    margin: 20px auto;
+}
+
+#container {
     width: 600px;
     height: 600px;
-    margin: 50px auto;
+    margin: 20px auto;
     border: 3px dotted black;
     /* 
         use flexbox with flex-wrap so that each row of outer box only can fit 16 boxes.
