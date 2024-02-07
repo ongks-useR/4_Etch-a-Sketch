@@ -1,13 +1,51 @@
 function getUserRequest() {
 
-    let squareGrid = prompt('Please input Square Grid:');
+    let squareGrid = prompt('Please input integer between 16 and 100:');
 
     // Only proceed if user provide a number OR an interger
-    if ((squareGrid != null) || (Number.isInteger(squareGrid))) {
+    if (isNaN(parseInt(squareGrid))) {
+        alert(`Your input is incorrect. Please try again.`)
+        return
+    }
+    else if ((parseInt(squareGrid) >= 16) && ((parseInt(squareGrid) <= 100))) {
         squareGrid = parseInt(squareGrid)
+    }
+    else {
+        alert(`Invalid Input: ${squareGrid}. Please try again.`)
+        return
     }
 
     return squareGrid;
+}
+
+function hoverEffect() {
+
+    // Generate random number within specific range
+    function getRandom(min, max) {
+        const floatRandom = Math.random()
+
+        const difference = max - min
+
+        // random between 0 and the difference
+        const random = Math.round(difference * floatRandom)
+
+        const randomWithinRange = random + min
+
+        return randomWithinRange
+    }
+
+    const boxes = document.querySelectorAll('#container > div');
+
+    boxes.forEach(box => {
+
+        let red = getRandom(0, 255)
+        let green = getRandom(0, 255)
+        let blue = getRandom(0, 255)
+
+        box.addEventListener('mouseenter',
+            e => { e.target.style.backgroundColor = `RGB(${red}, ${green}, ${blue})` }
+        )
+    })
 }
 
 function sketchPad() {
@@ -32,6 +70,8 @@ function sketchPad() {
 
         root.appendChild(box);
     }
+
+    hoverEffect()
 }
 
 const button = document.querySelector('button');
