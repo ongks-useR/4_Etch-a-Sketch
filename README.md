@@ -1,6 +1,5 @@
-# 4_Etch-a-Sketch
-The Odin Project: Etch-a-Sketch
+# 4_Etch-a-Sketch  
 
-Reference: https://www.theodinproject.com/lessons/foundations-etch-a-sketch
+The Odin Project: [Etch-a-Sketch](https://www.theodinproject.com/lessons/foundations-etch-a-sketch)
 
-Completed project hosted on Github page: https://ongks-user.github.io/4_Etch-a-Sketch/
+Click [here](https://ongks-user.github.io/4_Etch-a-Sketch/) for completed project hosted on Github page. 
