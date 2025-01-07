@@ -1,44 +1,42 @@
 body {
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-button {
-    font-size: 15px;
-    font-weight: 700;
-    padding: 10px 30px;
-    margin: 20px auto;
-}
-
-#master {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: flex;
     justify-content: center;
-    gap: 50px;
+    align-items: center;
 }
 
-ol {
-    text-align: left;
-    font-size: 14px;
+.container {
+    width: 850px;
+    padding: 30px 0;
 }
 
-#container {
-    width: 600px;
-    height: 600px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border: 3px dotted black;
-    /* 
-        use flexbox with flex-wrap so that each row of outer box only can fit 16 boxes.
-        other boxes will go into next row accordingly until all rows are completely filled.
-    */
+input[type="button"] {
+    display: block;
+    margin: 0 auto;
+    margin: 50px auto;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    color: red;
+    font-weight: 600;
+}
+
+#sketch-pad {
+    width: 800px;
+    height: auto;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
 }
 
-/* 
-    CSS style will be applied accordingly once JavaScript event is triggered.
-*/
-#container div {
+#sketch-pad > div {
     box-sizing: border-box;
-    /* border: 0.5px dotted black; */
+    width: 50px;
+    height: 50px;
+    border: 2px dotted white;
+    background-color: aliceblue;
 }
