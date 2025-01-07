@@ -1,78 +1,62 @@
-function getUserRequest() {
 
-    let squareGrid = prompt('Please input integer between 16 and 100:');
+const startButton = document.querySelector("input");
+const pad = document.querySelector("#sketch-pad");
 
-    // Only proceed if user provide a number OR an interger
-    if (isNaN(parseInt(squareGrid))) {
-        alert(`Your input is incorrect. Please try again.`)
+
+addEventListener('load', () => {
+    const numberOfBoxes = 16 * 16;
+
+    for (let i = 1; i <= numberOfBoxes; i++) {
+        
+        const div = document.createElement('div');
+        div.setAttribute('id', i);
+        pad.appendChild(div);
+        
+    }
+})
+
+
+function randomColor() {
+    const code = Math.ceil(Math.random() * 255);
+
+    return code;
+}
+
+
+startButton.addEventListener('click', () => {
+
+    let input = prompt("Please enter an integer between 16 and 100: ")
+    
+    if (input === '') {
+        alert("Number is missing !!")
         return
     }
-    else if ((parseInt(squareGrid) >= 16) && ((parseInt(squareGrid) <= 100))) {
-        squareGrid = parseInt(squareGrid)
+    else if (Number(input) < 16 || Number(input) > 100) {
+        alert("Invalid Number. Please enter a number between 16 and 100.")
+        return
     }
     else {
-        alert(`Invalid Input: ${squareGrid}. Please try again.`)
-        return
+        // Actions if number is valid
+
+        pad.textContent = ""
+        pad.style.cssText = "border: 5px dotted grey;"
+
+        const numberOfBoxes = input ** 2;
+        const boxWidth = 800 / input;
+        const boxHeight = 800 / input;
+        const boxStyle = `width: ${boxWidth}px; height: ${boxHeight}px; border: none; background: none`;
+
+        for (let i = 1; i <= numberOfBoxes; i++) {
+            
+            const div = document.createElement('div');
+            div.style.cssText = boxStyle;
+            div.id = i;
+            div.addEventListener('mouseover', e => { 
+                e.target.style.cssText = `width: ${boxWidth}px; height: ${boxHeight}px; border: none; background: rgb(${randomColor()}, ${randomColor()}, ${randomColor()});`;
+            })
+
+            pad.appendChild(div);
+        }
     }
+})
 
-    return squareGrid;
-}
-
-function hoverEffect() {
-
-    // Generate random number within specific range
-    function getRandom(min, max) {
-        const floatRandom = Math.random()
-
-        const difference = max - min
-
-        // random between 0 and the difference
-        const random = Math.round(difference * floatRandom)
-
-        const randomWithinRange = random + min
-
-        return randomWithinRange
-    }
-
-    const boxes = document.querySelectorAll('#container > div');
-
-    boxes.forEach(box => {
-
-        let red = getRandom(0, 255)
-        let green = getRandom(0, 255)
-        let blue = getRandom(0, 255)
-
-        box.addEventListener('mouseenter',
-            e => { e.target.style.backgroundColor = `RGB(${red}, ${green}, ${blue})` }
-        )
-    })
-}
-
-function sketchPad() {
-
-    // Clear the sketch pad each time user click the "Start" button
-    const root = document.querySelector('#container');
-    root.textContent = '';
-
-    let squareGrid = getUserRequest();
-    let numberOfBox = squareGrid ** 2;
-
-    // Draw the square box
-    for (let i = 1; i <= numberOfBox; i++) {
-
-        const box = document.createElement('div');
-
-        // height and width of each box based on outer box 600px and divided among numberOfBox
-        const height = 600 / squareGrid;
-        const width = 600 / squareGrid;
-
-        box.style.cssText = `height: ${height}px; width: ${width}px;`
-
-        root.appendChild(box);
-    }
-
-    hoverEffect()
-}
-
-const button = document.querySelector('button');
-button.addEventListener('click', sketchPad);
